@@ -664,9 +664,8 @@ MINIFY_BUNDLES = {
         ),
         'privacy-test': (
             'js/libs/d3.js',
+            'js/libs/d3.tip.js',
             'js/libs/rangeslider.js',
-            'js/libs/jquery.waypoints.min.js',
-            'js/libs/jquery.waypoints-sticky.min.js',
             'js/privacy/privacy-test.js',
         ),
         'products': (
