@@ -14,6 +14,13 @@
 
 {% block body_class %}{% endblock %}
 
+{% block string_data %}
+{# L10n: This is the label for a button that plays the timeline animation #}
+data-play="{{ _('Play') }}"
+{# L10n: This is the label for a button that pauses the timeline animation #}
+data-pause="{{ _('Pause') }}"
+{% endblock %}
+
 {% block site_header %}
   <header id="masthead">
     <div class="container">
@@ -46,6 +53,7 @@
       </div>
       <div class="copy-container">
         <div class="copy-top-container">
+          <!-- <button class="auto-play" type="button" aria-controls="graph">{{ _('Play') }}</button> -->
           <ul class="copy-top day-in-life">
             <li class="step0">{{ _('Use the slider to move through a day in your life online') }}</li>
             <li class="step1">{{ _('You wake up and see an email about a friend’s party that night') }}</li>

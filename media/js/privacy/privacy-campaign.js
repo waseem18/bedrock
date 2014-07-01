@@ -247,6 +247,7 @@ $(function() {
         this.timer = null;
         this.contentTimer = null;
         this.$slider = $('#slider');
+        this.$handle = null;
         this.$sun = $('.sun-inner');
         this.$window = $(window);
         this.$slideContent = $('.day-in-life');
@@ -404,11 +405,9 @@ $(function() {
      * @param step (number)
      */
     ScatterPlot.prototype.scrollToGradient = function (step, direction) {
-        //var width = this.$window.width();
         var percent = (step / this.totalTicks) * 100;
-        //var pos = Math.round(width * ((percent * 2) / 10)) + 'px';
-        var rotation = Math.round(percent) * 1.8;
         var nearest = Math.ceil(percent / 10) * 10;
+        var rotation = Math.round(nearest) * 1.8;
         var color1 = '#90ADC6';
         var color2 = '#92BBDB';
         var delay1 = direction === 'forward' ? 500 : 300;
@@ -565,6 +564,7 @@ $(function() {
             this.scrollToGradient(val, direction);
             this.showSlideContent(val);
             this.updateStats();
+            this.$handle.attr('aria-valuenow', val);
         }, this), 200);
     };
 
@@ -604,14 +604,52 @@ $(function() {
      * Create rangeslider.js instance bound to the graph
      */
     ScatterPlot.prototype.createSlider = function () {
+
         this.$slider.rangeslider({
             polyfill: false,
             onSlide: $.proxy(this.onSliderChange, this)
         });
         //set the slider at the beginning
         this.$slider.val(0).change();
+
+        this.$handle = $('.rangeslider__handle');
+
+        //add aria support to slider
+        this.$handle.attr('role', 'slider');
+        this.$handle.attr('aria-controls', 'graph');
+        this.$handle.attr('aria-valuemin', 0);
+        this.$handle.attr('aria-valuemax', this.totalTicks);
+        this.$handle.attr('aria-valuenow', 0);
+
         //make the slider keyboard focusable & bind key events
-        $('.rangeslider__handle').attr('tabindex', 0).on('keydown', $.proxy(this.onKeyPress, this));
+        this.$handle.attr('tabindex', 0).on('keydown', $.proxy(this.onKeyPress, this));
+    };
+
+    ScatterPlot.prototype.createControls = function () {
+        var $button = $('.auto-play');
+        var play = window.trans('play');
+        var pause = window.trans('pause');
+        var autoTimer;
+        var playing = false;
+
+        $button.on('click', $.proxy(function () {
+            if (!playing) {
+                playing = true;
+                $button.text(pause);
+                autoTimer = setInterval($.proxy(function () {
+                    this.$slider.val(this.currentIndex + 1).change();
+                    if (this.currentIndex === this.totalTicks) {
+                        playing = false;
+                        $button.text(play);
+                        clearInterval(autoTimer);
+                    }
+                }, this), 800);
+            } else {
+                playing = false;
+                $button.text(play);
+                clearInterval(autoTimer);
+            }
+        }, this));
     };
 
     /*
@@ -621,6 +659,7 @@ $(function() {
         this.createGradientBackground();
         this.createGraph();
         this.createCustomTicks();
+        this.createControls();
     };
 
     var scatter = new ScatterPlot(data);
