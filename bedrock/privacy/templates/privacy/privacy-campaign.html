@@ -6,7 +6,7 @@
 
 {% block body_id %}{% endblock %}
 
-{% block page_title %}{% endblock %}
+{% block page_title %}{{ _('The Hidden Web') }}{% endblock %}
 
 {% block extrahead %}
   {{ css('privacy-campaign') }}
@@ -24,6 +24,7 @@ data-pause="{{ _('Pause') }}"
 {% block site_header %}
   <header id="masthead">
     <div class="container">
+      <h2>{{ _('The Hidden Web') }}</h2>
       <a href="{{ url('mozorg.home') }}" id="tabzilla" data-infobar="{{ settings.TABZILLA_INFOBAR_OPTIONS }}">Mozilla</a>
     </div>
   </header>
@@ -39,7 +40,7 @@ data-pause="{{ _('Pause') }}"
     <div class="plot-background"></div>
     <header>
       <div class="above">
-        <h1>{{ _('Welcome to the Web') }}</h1>
+        <h2>{{ _('Welcome to the Web') }}</h2>
       </div>
       <div class="below">
         <p>{{ _('You don’t know') }}</p>
@@ -66,7 +67,18 @@ data-pause="{{ _('Pause') }}"
         </div>
         <div class="copy-bottom-container">
           <ul class="copy-bottom day-in-life">
-            <li class="step0">{{ _('And see the info shared without your knowledge') }}</li>
+            <li class="step0">
+              {{ _('And see the info shared without your knowledge') }}
+              <div class="related">
+                <h3>{{ _('Where does this data come from?') }}</h3>
+                <p>{{ _('This is aggregate data from X users of the Lightbeam addon for Firefox.') }}</p>
+                <p class="last">
+                  {% trans url1='#', url2='#' %}
+                    <a href="{{ url1 }}">Learn more</a> or <a href="{{ url2 }}">try it yourself</a>.
+                  {% endtrans %}
+                </p>
+              </div>
+            </li>
             <li class="step1">{{ _('As third-party sites start to track you across the Web') }}</li>
             <li class="step5">{{ _('Now sites you’ve never heard of know things like where you are') }}</li>
             <li class="step10">{{ _('But you’ve already connected to more than Y others') }}</li>
@@ -84,13 +96,13 @@ data-pause="{{ _('Pause') }}"
       </div>
       <div class="stat-container">
         <div class="stat-top-container">
-          <div class="stat visited">
+          <div class="stat visited" data-count="0">
             <span>0</span><br>
             {{ _('Sites you’ve <br>visited') }}
           </div>
         </div>
         <div class="stat-bottom-container">
-          <div class="stat unknown">
+          <div class="stat unknown" data-count="0">
             <span>0</span><br>
             {{ _('Unknown sites <br>tracking you') }}
           </div>

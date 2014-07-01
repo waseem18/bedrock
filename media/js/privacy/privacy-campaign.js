@@ -506,9 +506,12 @@ $(function() {
     /*
      * Update page stats based on current graph data
      */
-    ScatterPlot.prototype.updateStats = function () {
+    ScatterPlot.prototype.updateStats = function (direction) {
+        var that = this;
         var visited = 0;
         var unknown = 0;
+        var currentVisited = this.$visited.text();
+        var currentUnknown = this.$unknown.text();
 
         $.each(this.cache, function (i, d) {
             if (d.pos > 0) {
@@ -518,8 +521,27 @@ $(function() {
             }
         });
 
-        this.$visited.text(visited);
-        this.$unknown.text(unknown);
+        $({newValue: currentVisited}).stop().animate({newValue: visited}, {
+            duration: 400,
+            easing:'swing',
+            step: function () {
+                that.$visited.text(Math.ceil(this.newValue));
+            },
+            done: function () {
+                that.$visited.text(visited);
+            }
+        });
+
+        $({newValue: currentUnknown}).stop().animate({newValue: unknown}, {
+            duration: 400,
+            easing:'swing',
+            step: function () {
+                that.$unknown.text(Math.ceil(this.newValue));
+            },
+            done: function () {
+                that.$unknown.text(unknown);
+            }
+        });
     };
 
     /*
@@ -563,7 +585,7 @@ $(function() {
         this.timer = setTimeout($.proxy(function () {
             this.scrollToGradient(val, direction);
             this.showSlideContent(val);
-            this.updateStats();
+            this.updateStats(direction);
             this.$handle.attr('aria-valuenow', val);
         }, this), 200);
     };
