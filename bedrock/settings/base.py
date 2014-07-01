@@ -345,9 +345,9 @@ MINIFY_BUNDLES = {
         'privacy-day': (
             'css/privacy/privacy-day.less',
         ),
-        'privacy-test': (
+        'privacy-campaign': (
             'css/libs/rangeslider.css',
-            'css/privacy/privacy-test.less',
+            'css/privacy/privacy-campaign.less',
         ),
         'fb_privacy': (
             'css/privacy/fb-privacy.less',
@@ -662,11 +662,11 @@ MINIFY_BUNDLES = {
         'privacy-day': (
             'js/privacy/privacy-day.js',
         ),
-        'privacy-test': (
+        'privacy-campaign': (
             'js/libs/d3.js',
             'js/libs/d3.tip.js',
             'js/libs/rangeslider.js',
-            'js/privacy/privacy-test.js',
+            'js/privacy/privacy-campaign.js',
         ),
         'products': (
             'js/libs/jquery.waypoints.min.js',
