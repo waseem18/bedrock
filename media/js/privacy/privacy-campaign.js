@@ -410,8 +410,8 @@ $(function() {
         var rotation = Math.round(nearest) * 1.8;
         var color1 = '#90ADC6';
         var color2 = '#92BBDB';
-        var delay1 = direction === 'forward' ? 500 : 300;
-        var delay2 = direction === 'forward' ? 300 : 500;
+        var delay1 = direction === 'forward' ? 600 : 400;
+        var delay2 = direction === 'forward' ? 400 : 600;
 
         switch (nearest) {
         case 0:
@@ -468,8 +468,8 @@ $(function() {
             'transform': 'rotate(' + rotation + 'deg)'
         });
 
-        this.gradient.select('.stop1').transition().delay(delay1).duration(500).attr('stop-color', color1);
-        this.gradient.select('.stop2').transition().delay(delay2).duration(500).attr('stop-color', color2);
+        this.gradient.select('.stop1').transition().delay(delay1).duration(700).attr('stop-color', color1);
+        this.gradient.select('.stop2').transition().delay(delay2).duration(700).attr('stop-color', color2);
     };
 
     /*
