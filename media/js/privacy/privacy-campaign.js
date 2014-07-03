@@ -253,6 +253,8 @@ $(function() {
         this.$slideContent = $('.day-in-life');
         this.$visited = $('.visited span');
         this.$unknown = $('.unknown span');
+        this.$playButton = $('.auto-play');
+        this.$sliderTooltip = $('#slider-label');
         this.currentIndex = null;
         this.cache = data;
         this.svg = null;
@@ -545,6 +547,17 @@ $(function() {
     };
 
     /*
+     * Toggles the slider tooltip label visible on the first step
+     */
+    ScatterPlot.prototype.toggleTooltip = function () {
+        if (this.currentIndex === 0) {
+            this.$sliderTooltip.addClass('show');
+        } else {
+            this.$sliderTooltip.removeClass('show');
+        }
+    };
+
+    /*
      * Handle slider value changes and update the graph based on position
      * @param position (number), value (string)
      */
@@ -579,6 +592,8 @@ $(function() {
 
         this.currentIndex = val;
         this.updateProgressTick(val);
+        this.toggleTooltip();
+        this.updateControls();
 
         // use a small timeout before doing the
         // intensive background stuff
@@ -587,7 +602,7 @@ $(function() {
             this.showSlideContent(val);
             this.updateStats(direction);
             this.$handle.attr('aria-valuenow', val);
-        }, this), 200);
+        }, this), 250);
     };
 
     /*
@@ -638,6 +653,7 @@ $(function() {
 
         //add aria support to slider
         this.$handle.attr('role', 'slider');
+        this.$handle.attr('aria-labelledby', 'slider-label');
         this.$handle.attr('aria-controls', 'graph');
         this.$handle.attr('aria-valuemin', 0);
         this.$handle.attr('aria-valuemax', this.totalTicks);
@@ -647,28 +663,41 @@ $(function() {
         this.$handle.attr('tabindex', 0).on('keydown', $.proxy(this.onKeyPress, this));
     };
 
+    /*
+     * Set the play button disabled state
+     */
+    ScatterPlot.prototype.updateControls = function () {
+        if (this.currentIndex < this.totalTicks) {
+            this.$playButton.prop('disabled', false);
+        } else if (this.currentIndex === this.totalTicks) {
+            this.$playButton.prop('disabled', true);
+        }
+    };
+
+    /*
+     * Create timeline play button and bind click event
+     */
     ScatterPlot.prototype.createControls = function () {
-        var $button = $('.auto-play');
         var play = window.trans('play');
         var pause = window.trans('pause');
         var autoTimer;
         var playing = false;
 
-        $button.on('click', $.proxy(function () {
+        this.$playButton.on('click', $.proxy(function () {
             if (!playing) {
                 playing = true;
-                $button.text(pause);
+                this.$playButton.text(pause);
                 autoTimer = setInterval($.proxy(function () {
                     this.$slider.val(this.currentIndex + 1).change();
                     if (this.currentIndex === this.totalTicks) {
                         playing = false;
-                        $button.text(play);
+                        this.$playButton.text(play);
                         clearInterval(autoTimer);
                     }
                 }, this), 800);
             } else {
                 playing = false;
-                $button.text(play);
+                this.$playButton.text(play);
                 clearInterval(autoTimer);
             }
         }, this));

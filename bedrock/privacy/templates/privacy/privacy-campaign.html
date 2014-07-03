@@ -54,7 +54,6 @@ data-pause="{{ _('Pause') }}"
       </div>
       <div class="copy-container">
         <div class="copy-top-container">
-          <!-- <button class="auto-play" type="button" aria-controls="graph">{{ _('Play') }}</button> -->
           <ul class="copy-top day-in-life">
             <li class="step0">{{ _('Use the slider to move through a day in your life online') }}</li>
             <li class="step1">{{ _('You wake up and see an email about a friend’s party that night') }}</li>
@@ -90,6 +89,7 @@ data-pause="{{ _('Pause') }}"
       </div>
       <div class='graph-container'>
         <svg id="graph" class="svg" viewBox="0 0 600 700" preserveAspectRatio="xMinYMin meet"></svg>
+        <div id="slider-label">{{ _('Use the slider to move through a day in your life online') }}</div>
         <div class="slider-container">
           <input id="slider" type="range" min="0" max="24" step="1" value="0">
         </div>
@@ -105,6 +105,7 @@ data-pause="{{ _('Pause') }}"
           <div class="stat unknown" data-count="0">
             <span>0</span><br>
             {{ _('Unknown sites <br>tracking you') }}
+            <button class="auto-play button" type="button" aria-controls="graph">{{ _('Play') }}</button>
           </div>
         </div>
       </div>
