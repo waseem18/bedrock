@@ -363,6 +363,9 @@ $(function() {
             .attr('r', 6);
 
         circles.exit().remove();
+
+        // make sure any rouge tooltips are hidden
+        this.tip.hide();
     };
 
     /*
@@ -508,8 +511,7 @@ $(function() {
     /*
      * Update page stats based on current graph data
      */
-    ScatterPlot.prototype.updateStats = function (direction) {
-        var that = this;
+    ScatterPlot.prototype.updateStats = function () {
         var visited = 0;
         var unknown = 0;
         var currentVisited = this.$visited.text();
@@ -523,27 +525,25 @@ $(function() {
             }
         });
 
-        $({newValue: currentVisited}).stop().animate({newValue: visited}, {
-            duration: 400,
-            easing:'swing',
-            step: function () {
-                that.$visited.text(Math.ceil(this.newValue));
-            },
-            done: function () {
-                that.$visited.text(visited);
-            }
-        });
+        d3.select('.visited span')
+            .transition()
+            .duration(400)
+            .tween('span', function () {
+                var i = d3.interpolateNumber(currentVisited, visited);
+                return function (t) {
+                    this.textContent = Math.round(i(t));
+                };
+            });
 
-        $({newValue: currentUnknown}).stop().animate({newValue: unknown}, {
-            duration: 400,
-            easing:'swing',
-            step: function () {
-                that.$unknown.text(Math.ceil(this.newValue));
-            },
-            done: function () {
-                that.$unknown.text(unknown);
-            }
-        });
+        d3.select('.unknown span')
+            .transition()
+            .duration(400)
+            .tween('span', function () {
+                var i = d3.interpolateNumber(currentUnknown, unknown);
+                return function (t) {
+                    this.textContent = Math.round(i(t));
+                };
+            });
     };
 
     /*
