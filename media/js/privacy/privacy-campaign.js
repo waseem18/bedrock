@@ -694,7 +694,7 @@ $(function() {
                         this.$playButton.text(play);
                         clearInterval(autoTimer);
                     }
-                }, this), 800);
+                }, this), 900);
             } else {
                 playing = false;
                 this.$playButton.text(play);
