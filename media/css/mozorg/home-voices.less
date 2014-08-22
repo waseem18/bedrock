@@ -1,0 +1,485 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+@import "../sandstone/lib.less";
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('/media/fonts/FiraSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans Bold';
+    src: url('/media/fonts/FiraSans-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans Light';
+    src: url('/media/fonts/FiraSans-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#outer-wrapper {
+    background: #c13832;
+}
+
+#wrapper {
+    width: 100%;
+}
+
+#masthead {
+    width: @widthDesktop - (@gridGutterWidth * 2);
+    margin: 0 auto;
+
+    nav li {
+        a:link,
+        a:visited {
+            color: #fff;
+        }
+    }
+}
+
+// @Header, @mission statement
+.mission {
+    line-height: 1.1;
+    width: @widthDesktop - (@gridGutterWidth * 2);
+    margin: (@baseLine * 2) auto;
+    position: relative;
+    text-align: center;
+
+    h1 {
+        font-family: 'Fira Sans';
+        color: #fff;
+        font-size: 84px;
+        letter-spacing: -.05em;
+        margin: 0 0 .05em;
+        text-shadow: none;
+
+        img {
+            margin-bottom: -4px;
+        }
+    }
+
+    .tagline {
+        font-family: 'Fira Sans Light';
+        color: #ff9797;
+        font-size: 48px;
+        letter-spacing: -.025em;
+        margin: 0;
+    }
+}
+
+.promo-grid {
+    width: @widthDesktop - (@gridGutterWidth * 2);
+    margin: @baseLine auto;
+    .clearfix();
+
+    .column {
+        position: relative;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 300px;
+        float: left;
+
+        &.first {
+            margin-right: @baseLine;
+        }
+
+        &.second {
+            margin-right: @baseLine;
+        }
+    }
+}
+
+.voices-promo {
+    width: 100%;
+    margin-bottom: @baseLine;
+    background: #fff;
+
+    a:link,
+    a:visited {
+        text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+        outline: none;
+        text-decoration: none;
+
+        h2 {
+            color: @textColorSecondary;
+            text-decoration: underline;
+        }
+
+        img {
+            .transform(scale(1.1));
+        }
+    }
+}
+
+.voices-promo-image {
+    width: 300px;
+    height: 150px;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: auto;
+        -webkit-transition: -webkit-transform .3s ease-in-out;
+        transition: transform .3s ease-in-out;
+    }
+}
+
+.voices-promo-content {
+    position: relative;
+    padding: @baseLine;
+    font-family: 'Fira Sans Light';
+
+    .category {
+        font-family: 'Fira Sans Bold';
+        font-size: 13px;
+        text-transform: uppercase;
+
+        &.mozilla {
+            color: #c13832;
+        }
+
+        &.developer {
+            color: #086fcd;
+        }
+
+        &.technology {
+            color: #b2c6c8;
+        }
+
+        &.community {
+            color: #24c3c5;
+        }
+
+        &.firefox {
+            color: #e66000;
+        }
+    }
+
+    h2 {
+        font-family: 'Fira Sans Light';
+        color: @textColorTertiary;
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: @baseLine;
+        .transition(color .2s ease-in-out);
+    }
+
+    time {
+        color: @textColorLight;
+        font-size: 12px;
+    }
+}
+
+.promo-small {
+    position:relative;
+    width: 100%;
+    min-height: 150px;
+    margin-bottom: @baseLine;
+    font-family: 'Fira Sans Light';
+    overflow: hidden;
+
+    h2 {
+        line-height: 1.3;
+    }
+}
+
+.promo-small.firefox-download {
+    background: #689f2a;
+
+    h2 {
+        position: relative;
+        left: 0;
+        color: #fff;
+        text-shadow: none;
+        font-family: 'Fira Sans Light';
+        .transition(left .3s ease-in-out);
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.show {
+        h2 {
+            left: -300px;
+        }
+
+        img {
+            right: -200px;
+        }
+
+        .secondary-content {
+            opacity: 1;
+            visibility: visible;
+            .transition(opacity .3s .3s ease-in-out);
+        }
+    }
+
+    img {
+        position: absolute;
+        top: -10px;
+        right: -65px;
+        .transition(right .3s ease-in-out);
+    }
+
+    .primary-content {
+        padding: @baseLine;
+    }
+
+    .secondary-content {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        padding: @baseLine;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        -webkit-transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+        transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+
+        a:link,
+        a:visited {
+            color: #fff;
+        }
+
+        .download-link {
+            width: 100%;
+        }
+    }
+}
+
+.promo-small.support {
+    position:relative;
+    background: #626e83;
+    overflow: visible;
+    z-index: 0;
+
+    img {
+        position: absolute;
+        top: -30px;
+        left: -65px;
+        z-index: -1;
+    }
+
+    h2 {
+        font-size: 24px;
+        color: #fff;
+        text-shadow: none;
+        font-family: 'Fira Sans Light';
+    }
+
+    a:link,
+    a:visited {
+        float: right;
+        width: 45%;
+        margin: @baseLine;
+        z-index: 1;
+    }
+
+    a:hover,
+    a:focus {
+        h2 {
+            text-decoration: underline;
+        }
+    }
+}
+
+.promo-small.webmaker {
+    position:relative;
+    background: #cad3d4;
+    overflow: hidden;
+
+    img {
+        position: absolute;
+        top: -30px;
+        left: -40px;
+    }
+
+    h2 {
+        float: right;
+        width: 45%;
+        margin: @baseLine;
+        font-size: 24px;
+        color: #52787c;
+        text-shadow: none;
+        text-align: center;
+        font-family: 'Fira Sans Light';
+    }
+
+    a:link,
+    a:visited {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    a:hover,
+    a:focus {
+        h2 {
+            text-decoration: underline;
+        }
+    }
+}
+
+.promo-large {
+    position:relative;
+    width: 100%;
+    margin-bottom: @baseLine;
+    font-family: 'Fira Sans Light';
+    overflow: hidden;
+
+    h2 {
+        line-height: 1.3;
+        font-size: 28px;
+    }
+
+    a:link,
+    a:visited {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .secondary-content {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        padding: @baseLine;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.9);
+        -webkit-transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+        transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+
+        a:link,
+        a:visited {
+            color: #fff;
+        }
+
+        h3,
+        .sub-copy {
+            opacity: 0;
+            -webkit-transition: opacity .3s 0s ease-in-out, -webkit-transform .3s 0s ease-in-out;
+            transition: opacity .3s 0s ease-in-out, transform .3s 0s ease-in-out;
+        }
+
+        h3 {
+            margin-top: @baseLine;
+            font-family: 'Fira Sans Light';
+            color: #52787c;
+            .transform(translateY(-100%));
+        }
+
+        .sub-copy {
+            margin-top: @baseLine;
+            font-family: 'Fira Sans';
+            .transform(translateY(100%));
+        }
+    }
+
+    &.show {
+        .secondary-content {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transition: opacity .3s 0s ease-in-out;
+            transition: opacity .3s 0s ease-in-out;
+
+            h3,
+            .sub-copy {
+                -webkit-transition: opacity .3s .3s ease-in-out, -webkit-transform .3s .3s ease-in-out;
+                transition: opacity .3s .3s ease-in-out, transform .3s .3s ease-in-out;
+                opacity: 1;
+                .transform(translateY(0));
+            }
+        }
+    }
+}
+
+.promo-large.webmaker {
+    position:relative;
+    min-height: 340px;
+    background: #cad3d4;
+    overflow: hidden;
+
+    img {
+        position: absolute;
+        top: -30px;
+        left: -40px;
+    }
+
+    h2 {
+        position: absolute;
+        right: @baseLine;
+        bottom: @baseLine;
+        margin: 0;
+        color: #52787c;
+        text-shadow: none;
+        text-align: right;
+        font-family: 'Fira Sans Light';
+    }
+
+    .sub-copy {
+        p {
+            color: #12AB86;
+            font-size: 16px;
+
+            &.more {
+                font-weight: bold;
+                color: #0090BC;
+            }
+        }
+    }
+}
+
+.more {
+    .trailing-arrow();
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+/****************************************************************************/
+// @Tablet Layout: 760px
+@media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
+
+    #masthead,
+    .mission {
+        width: @widthTablet - (@gridGutterWidth * 2);
+    }
+
+    .promo-grid {
+        width: @widthTablet - (@gridGutterWidth * 2);
+
+        .column {
+            width: 226px;
+        }
+    }
+
+    .voices-promo-image {
+        width: 226px;
+        height: 113px;
+    }
+}

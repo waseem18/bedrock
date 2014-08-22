@@ -314,6 +314,9 @@ MINIFY_BUNDLES = {
         'home-ie': (
             'css/mozorg/home-ie.less',
         ),
+        'home-voices': (
+            'css/mozorg/home-voices.less',
+        ),
         'legal-eula': (
             'css/legal/eula.less',
         ),
@@ -625,6 +628,9 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.cycle2.min.js',
             'js/libs/jquery.cycle2.carousel.min.js',
             'js/mozorg/home.js',
+        ),
+        'home-voices': (
+            'js/mozorg/home-voices.js',
         ),
         'history-slides': (
             'js/libs/jquery.sequence.js',

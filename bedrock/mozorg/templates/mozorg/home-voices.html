@@ -1,0 +1,159 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "mozorg/base-resp.html" %}
+
+{% add_lang_files "mozorg/home" "mwc2014_promos" %}
+
+{% from 'macros.html' import facebook_share_url, twitter_share_url %}
+
+{% block page_title %}{{_('Home of the Mozilla Project')}}{% endblock %}
+{% block body_id %}home{% endblock %}
+{% block body_class %}lang-{{ LANG }}{% endblock %}
+
+{% block extra_meta %}
+<!-- validates bing webmaster tools -->
+<meta name="msvalidate.01" content="B7B177115A634927D608514DA17B2574" />
+<!-- YouTube Verification -->
+<meta name="google-site-verification" content="Mef8xJZ1-faaN2AdGdCfRFo5VeoXOSxjXNIzMsxcx94" />
+{% endblock %}
+
+{% block extrahead %}
+  {{ css('home-voices') }}
+{% endblock %}
+
+{% block string_data %}{% endblock %}
+
+{% block js %}
+  {{ js('home-voices') }}
+{% endblock %}
+
+{% block site_header_logo %}{% endblock %}
+
+{% block content %}
+<main role="main">
+  <header class="mission">
+    {# L10n: The Mozilla wordmark appears inline as part of this headline, so it reads as "We are Mozilla." #}
+    <h1>{{ _('We are %(mozilla_wordmark)s.') | format(mozilla_wordmark=high_res_img('img/sandstone/mozilla-wordmark-white.png', {'alt': 'Mozilla', 'width': '258', 'height': '70'})|safe) }}</h1>
+    <p class="tagline">{{ _('Building the internet the world needs.') }}</p>
+  </header>
+
+  <section class="promo-grid">
+    <ul class="column first">
+      <li class="voices-promo">
+        <a href="#">
+          <div class="voices-promo-image">
+            <img src="{{ media('img/home/voices/beard.jpg') }}" alt="">
+          </div>
+          <div class="voices-promo-content">
+            <p class="category mozilla">{{ _('Mozilla') }}</p>
+            <h2>{{ _('Chris Beard named Mozilla CEO') }}</h2>
+            <time>2 hours ago</time>
+          </div>
+        </a>
+      </li>
+      <li class="voices-promo">
+        <a href="#">
+          <div class="voices-promo-image">
+            <img src="{{ media('img/home/voices/developer.jpg') }}" alt="">
+          </div>
+          <div class="voices-promo-content">
+            <p class="category developer">{{ _('Developer') }}</p>
+            <h2>{{ _('Time to get hacking - Introducing Rec Room') }}</h2>
+            <time>2 hours ago</time>
+          </div>
+        </a>
+      </li>
+    </ul>
+    <ul class="column second">
+      <li class="promo-small firefox-download" tabindex="0">
+          <div class="primary-content">
+            <h2>{{ _('Download<br> Firefox') }}</h2>
+            <img src="{{ media('img/home/voices/firefox-logo.png') }}" alt="">
+          </div>
+          <div class="secondary-content">
+            {{ download_firefox(simple=true) }}
+          </div>
+      </li>
+      <li class="voices-promo">
+        <a href="#">
+          <div class="voices-promo-image">
+            <img src="{{ media('img/home/voices/tech.jpg') }}" alt="">
+          </div>
+          <div class="voices-promo-content">
+            <p class="category technology">{{ _('Technology') }}</p>
+            <h2>{{ _('Mozilla and Partners Prove the Web is the Platform for Gaming') }}</h2>
+            <time>2 hours ago</time>
+          </div>
+        </a>
+      </li>
+      <li class="promo-small support">
+        <a href="#">
+          <h2>{{ _('Join our<br> support<br> team') }}</h2>
+        </a>
+        <img src="{{ media('img/home/voices/support-fox.png') }}" alt="">
+      </li>
+    </ul>
+    <ul class="column third">
+      <li class="voices-promo">
+        <a href="#">
+          <div class="voices-promo-image">
+            <img src="{{ media('img/home/voices/community.jpg') }}" alt="">
+          </div>
+          <div class="voices-promo-content">
+            <p class="category community">{{ _('Community') }}</p>
+            <h2>{{ _('Mozilla Festival returns to London in October') }}</h2>
+            <time>2 hours ago</time>
+          </div>
+        </a>
+      </li>
+      <li class="promo-large webmaker">
+        <a href="#">
+          <div class="primary-content">
+            <h2>{{ _('Learn the Web') }}</h2>
+            <img src="{{ media('img/home/voices/webmaker/webmaker-logo-large.png') }}" alt="">
+          </div>
+          <div class="secondary-content">
+            <h3>{{ _('We teach the Web') }}</h3>
+            <div class="sub-copy">
+              <p>{{ _('Let‘s explore, tinker and create together to build a Web that‘s open and made by everyone.') }}</p>
+              <p class="more">{{ _('Become a Webmaker') }}</p>
+            </div>
+          </div>
+        </a>
+      </li>
+<!--       <li class="promo-small webmaker">
+        <a href="#">
+          <h2>{{ _('Become a<br> Webmaker') }}</h2>
+          <img src="{{ media('img/home/voices/webmaker/webmaker-logo.png') }}" alt="">
+        </a>
+      </li>
+      <li class="voices-promo">
+        <a href="#">
+          <div class="voices-promo-content">
+            <p class="category firefox">{{ _('Firefox') }}</p>
+            <h2>{{ _('Improving JPEG Image Encoding') }}</h2>
+            <time>2 hours ago</time>
+          </div>
+        </a>
+      </li> -->
+    </ul>
+  </section>
+
+  <section id="firefox-promo" class="billboard">
+    <div class="container">
+      <header>
+        <a href="{{ url('firefox') }}" id="firefox-promo-link">
+          <h3>{{ high_res_img('img/home/firefox-logo-wordmark.png', {'alt': 'Firefox', 'width': '250', 'height': '100'}) }}</h3>
+          <h4><strong>{{_('Different by&nbsp;design')}}</strong></h4>
+        </a>
+      </header>
+      {{ download_firefox(small=True, icon=False) }}
+    </div>
+  </section>
+</main>
+
+{% endblock %}
+
+{% block email_form %}{% endblock %}
