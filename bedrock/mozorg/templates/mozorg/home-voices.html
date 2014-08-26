@@ -29,7 +29,32 @@
   {{ js('home-voices') }}
 {% endblock %}
 
-{% block site_header_logo %}{% endblock %}
+{% block site_header %}
+  <header id="masthead">
+    <a href="{{ url('mozorg.home') }}" id="tabzilla" data-infobar="{{ settings.TABZILLA_INFOBAR_OPTIONS }}">Mozilla</a>
+
+    {% block site_header_nav %}
+    <nav id="nav-main" role="navigation">
+      <span class="toggle" role="button" aria-controls="nav-main-menu" aria-expanded="false" tabindex="0">{{_('Menu')}}</span>
+      <ul id="nav-main-menu">
+        <li><a href="{{ url('mozorg.contribute') }}">{{_('Volunteer')}}</a></li>
+        <li><a href="{{ url('mozorg.mission') }}">{{_('Our Mission')}}</a></li>
+        <li><a href="#">{{_('Mozilla Voices')}}</a></li>
+        <li><a href="{{ url('firefox.desktop.index') }}">{{_('Firefox')}}</a></li>
+      </ul>
+    </nav>
+    {% endblock %}
+
+    {% block site_header_logo %}{% endblock %}
+
+    {% block alt_header %}{% endblock %}
+
+    {% block subnav %}{% endblock %}
+
+    {% block breadcrumbs %}{% endblock %}
+
+  </header>
+{% endblock %}
 
 {% block content %}
 <main role="main">
@@ -108,18 +133,16 @@
           </div>
         </a>
       </li>
-      <li class="promo-large webmaker">
-        <a href="#">
-          <div class="primary-content">
-            <h2>{{ _('Learn the Web') }}</h2>
-            <img src="{{ media('img/home/voices/webmaker/webmaker-logo-large.png') }}" alt="">
-          </div>
-          <div class="secondary-content">
-            <h3>{{ _('We teach the Web') }}</h3>
-            <div class="sub-copy">
-              <p>{{ _('Let‘s explore, tinker and create together to build a Web that‘s open and made by everyone.') }}</p>
-              <p class="more">{{ _('Become a Webmaker') }}</p>
-            </div>
+      <li class="promo-large webmaker" tabindex="0">
+        <div class="primary-content">
+          <h2>{{ _('Learn the Web') }}</h2>
+          <img src="{{ media('img/home/voices/webmaker/webmaker-logo-large.png') }}" alt="">
+        </div>
+        <a href="#" class="secondary-content">
+          <h3>{{ _('We teach the Web') }}</h3>
+          <div class="sub-copy">
+            <p>{{ _('Let‘s explore, tinker and create together to build a Web that‘s open and made by everyone.') }}</p>
+            <p class="more">{{ _('Become a Webmaker') }}</p>
           </div>
         </a>
       </li>
@@ -141,7 +164,7 @@
     </ul>
   </section>
 
-  <section id="firefox-promo" class="billboard">
+  <section class="firefox-download-section billboard">
     <div class="container">
       <header>
         <a href="{{ url('firefox') }}" id="firefox-promo-link">
@@ -149,8 +172,12 @@
           <h4><strong>{{_('Different by&nbsp;design')}}</strong></h4>
         </a>
       </header>
-      {{ download_firefox(small=True, icon=False) }}
+      {{ download_firefox(simple=true) }}
     </div>
+  </section>
+
+  <section class="secondary">
+
   </section>
 </main>
 

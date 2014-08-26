@@ -31,6 +31,7 @@
 
 #wrapper {
     width: 100%;
+    padding-bottom: 0;
 }
 
 #masthead {
@@ -43,6 +44,10 @@
             color: #fff;
         }
     }
+}
+
+#colophon {
+    margin: 0;
 }
 
 // @Header, @mission statement
@@ -259,6 +264,10 @@
         .download-link {
             width: 100%;
         }
+        .download-other {
+            margin-top: @baseLine;
+            color: #fff;
+        }
     }
 }
 
@@ -358,6 +367,12 @@
         bottom: 0;
     }
 
+    a:hover,
+    a:focus {
+        ooutline: none;
+        text-decoration: none;
+    }
+
     .secondary-content {
         opacity: 0;
         visibility: hidden;
@@ -371,11 +386,6 @@
         background: rgba(255, 255, 255, 0.9);
         -webkit-transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
         transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
-
-        a:link,
-        a:visited {
-            color: #fff;
-        }
 
         h3,
         .sub-copy {
@@ -461,6 +471,86 @@
     }
 }
 
+.firefox-download-section {
+    position: relative;
+    margin: 0;
+    padding: 20px;
+    border: 0;
+
+    .container {
+        display: table;
+        width: @widthDesktop - (@gridGutterWidth * 4);
+    }
+
+    header {
+        display: table-cell;
+        padding: 0 20px 0 0;
+        width: auto;
+        vertical-align: middle;
+
+        a {
+            display: table;
+            width: 100%;
+
+            &:hover,
+            &:focus,
+            &:active {
+                text-decoration: none;
+            }
+        }
+
+        h3, h4 {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        h3 {
+            width: 250px;
+
+            img {
+                vertical-align: top;
+            }
+        }
+
+        h4 {
+            width: auto;
+
+            strong {
+                display: block;
+                margin: 5px 0 0 20px;
+                border: dotted @borderColor;
+                border-width: 0 0 0 1px;
+                padding: 5px 0 5px 20px;
+                font-size: 40px;
+                line-height: 1.1;
+                font-weight: normal;
+                letter-spacing: -.05em;
+                color: #999;
+            }
+        }
+    }
+
+    .download-button {
+        margin-top: 17px;
+    }
+}
+
+.html-rtl .firefox-download-section header {
+    padding: 0 0 0 20px;
+
+    h4 strong {
+        margin: 5px 20px 0 0;
+        border-width: 0 1px 0 0;
+        padding: 5px 20px 5px 0;
+    }
+}
+
+.secondary {
+    width: 100%;
+    height: 300px;
+    background: #e4e1d6;
+}
+
 /****************************************************************************/
 // @Tablet Layout: 760px
 @media only screen and (min-width: @breakTablet) and (max-width: @breakDesktop) {
@@ -482,4 +572,19 @@
         width: 226px;
         height: 113px;
     }
+}
+
+/****************************************************************************/
+// @Mobile Layout
+@media only screen and (max-width: @breakTablet) {
+
+    #masthead {
+        nav li {
+            a:link,
+            a:visited {
+                color: #484848;
+            }
+        }
+    }
+
 }

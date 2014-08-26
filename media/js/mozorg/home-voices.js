@@ -26,4 +26,7 @@
         $(this).removeClass('show');
     });
 
+    var $downloadButtonLinks = $('.firefox-download .download-other-desktop').detach();
+    $downloadButtonLinks.css('display', 'block').appendTo('.firefox-download .secondary-content');
+
 })(window.jQuery);
