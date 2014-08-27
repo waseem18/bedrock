@@ -1,0 +1,182 @@
+{# This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/. -#}
+
+{% extends "mozorg/base-resp.html" %}
+
+{% add_lang_files "mozorg/home" "mwc2014_promos" %}
+
+{% from 'macros.html' import facebook_share_url, twitter_share_url %}
+
+{% block page_title %}{{_('Home of the Mozilla Project')}}{% endblock %}
+{% block body_id %}home{% endblock %}
+{% block body_class %}lang-{{ LANG }}{% endblock %}
+
+{% block extra_meta %}
+<!-- validates bing webmaster tools -->
+<meta name="msvalidate.01" content="B7B177115A634927D608514DA17B2574" />
+<!-- YouTube Verification -->
+<meta name="google-site-verification" content="Mef8xJZ1-faaN2AdGdCfRFo5VeoXOSxjXNIzMsxcx94" />
+{% endblock %}
+
+{% block extrahead %}
+  {{ css('home-voices-b') }}
+{% endblock %}
+
+{% block string_data %}{% endblock %}
+
+{% block js %}
+  {{ js('home-voices-b') }}
+{% endblock %}
+
+{% block site_header %}
+  <header id="masthead">
+    <a href="{{ url('mozorg.home') }}" id="tabzilla" data-infobar="{{ settings.TABZILLA_INFOBAR_OPTIONS }}">Mozilla</a>
+
+    {% block site_header_nav %}
+    <nav id="nav-main" role="navigation">
+      <span class="toggle" role="button" aria-controls="nav-main-menu" aria-expanded="false" tabindex="0">{{_('Menu')}}</span>
+      <ul id="nav-main-menu">
+        <li><a href="{{ url('mozorg.contribute') }}">{{_('Volunteer')}}</a></li>
+        <li><a href="{{ url('mozorg.mission') }}">{{_('Our Mission')}}</a></li>
+        <li><a href="#">{{_('Mozilla Voices')}}</a></li>
+        <li><a href="{{ url('firefox.desktop.index') }}">{{_('Firefox')}}</a></li>
+      </ul>
+    </nav>
+    {% endblock %}
+
+    {% block site_header_logo %}{% endblock %}
+
+    {% block alt_header %}{% endblock %}
+
+    {% block subnav %}{% endblock %}
+
+    {% block breadcrumbs %}{% endblock %}
+
+  </header>
+{% endblock %}
+
+{% block content %}
+<main role="main">
+  <header class="mission">
+    {# L10n: The Mozilla wordmark appears inline as part of this headline, so it reads as "We are Mozilla." #}
+    <h1><img src="{{ MEDIA_URL }}img/home/voices-b/mozilla-logo.png" alt="Mozilla"></h1>
+    <p class="tagline">{{ _('Building the internet the world needs.') }}</p>
+  </header>
+
+  <section class="promo-grid-wrapper">
+    <div class="promo-grid-inner">
+      <ul class="promo-grid">
+        <li class="item promo-large-portrait voices-open-web"></li>
+        <li class="item promo-small-landscape tweet"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-small-landscape firefox-download stamp">
+          <h2>{{ _('Free Download') }}</h2>
+        </li>
+        <li class="item promo-large-landscape voices-hello"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-small-landscape sumo"></li>
+        <li class="item promo-small-landscape net-nutrality"></li>
+        <li class="item promo-large-portrait maker-party"></li>
+        <li class="item promo-large-landscape voices-net-nutrality"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-square"></li>
+        <li class="item promo-small-landscape sumo"></li>
+        <li class="item promo-square"></li>
+      </ul>
+    </div>
+    <div class="faces-grid-inner">
+      <ul class="faces-grid">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="firefox-download-section">
+    <div class="container">
+      <header>
+        <a href="{{ url('firefox') }}" id="firefox-promo-link">
+          <h3><img src="{{ MEDIA_URL }}img/home/voices-b/firefox-logo-wordmark-white.png" alt="Firefox"></h3>
+          <h4><strong>{{_('Different by&nbsp;design')}}</strong></h4>
+        </a>
+      </header>
+      {{ download_firefox(simple=true) }}
+    </div>
+  </section>
+
+  <section class="secondary">
+
+  </section>
+</main>
+
+{% endblock %}
+
+{% block email_form %}{% endblock %}

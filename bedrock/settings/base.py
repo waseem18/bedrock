@@ -317,6 +317,9 @@ MINIFY_BUNDLES = {
         'home-voices': (
             'css/mozorg/home-voices.less',
         ),
+        'home-voices-b': (
+            'css/mozorg/home-voices-b.less',
+        ),
         'legal-eula': (
             'css/legal/eula.less',
         ),
@@ -631,6 +634,10 @@ MINIFY_BUNDLES = {
         ),
         'home-voices': (
             'js/mozorg/home-voices.js',
+        ),
+        'home-voices-b': (
+            'js/libs/masonry.pkgd.js',
+            'js/mozorg/home-voices-b.js',
         ),
         'history-slides': (
             'js/libs/jquery.sequence.js',
