@@ -6,6 +6,7 @@ $(function () {
     'use strict';
 
     var $promos = $('.promo-grid');
+    var $promoContainer = $('.promo-grid-inner');
 
     function toggleFaces (show) {
         if (show) {
@@ -48,6 +49,38 @@ $(function () {
     }
 
     initFirefoxDownloadPromo();
+
+    function initPromoHoverOver () {
+        var $promoLargeLandscape = $('.promo-large-landscape, .promo-large-portrait');
+        var showTimeout;
+
+        $promoLargeLandscape.on('mousemove', function (e) {
+            if (!$promos.hasClass('scroll')) {
+                $(this).addClass('show');
+            }
+        });
+
+        $promoLargeLandscape.on('focusin', function () {
+            $(this).addClass('show');
+        });
+
+        $promoLargeLandscape.on('mouseleave focusout', function () {
+            $(this).removeClass('show');
+        });
+
+        $(window).on('scroll', function () {
+            clearTimeout(showTimeout);
+            if (!$promos.hasClass('scroll')) {
+                $promos.addClass('scroll');
+            }
+
+            showTimeout = setTimeout(function () {
+                $promos.removeClass('scroll');
+            }, 200);
+        });
+    }
+
+    initPromoHoverOver();
 
     $('.faces-grid').masonry({
         columnWidth: 140,
