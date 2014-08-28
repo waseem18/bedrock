@@ -32,21 +32,8 @@ $(function () {
         }
     });
 
-    $('.faces-grid').masonry({
-        columnWidth: 140,
-        gutter: 20,
-        itemSelector: 'li'
-    });
-
-    $promos.masonry({
-        columnWidth: 140,
-        gutter: 20,
-        itemSelector: '.item',
-        stamp: '.stamp'
-    });
-
     function initFirefoxDownloadPromo () {
-        var $downloadPromo = $('.firefox-download');
+        var $downloadPromo = $('.firefox-download').addClass('stamp');
         var $downloadButtonLinks = $('.firefox-download .download-other-desktop').detach();
 
         $downloadPromo.on('mouseenter focusin', function () {
@@ -62,5 +49,16 @@ $(function () {
 
     initFirefoxDownloadPromo();
 
+    $('.faces-grid').masonry({
+        columnWidth: 140,
+        gutter: 20,
+        itemSelector: 'li'
+    });
 
+    $promos.masonry({
+        columnWidth: 140,
+        gutter: 20,
+        itemSelector: '.item',
+        stamp: '.stamp'
+    });
 });
