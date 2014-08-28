@@ -44,4 +44,23 @@ $(function () {
         itemSelector: '.item',
         stamp: '.stamp'
     });
+
+    function initFirefoxDownloadPromo () {
+        var $downloadPromo = $('.firefox-download');
+        var $downloadButtonLinks = $('.firefox-download .download-other-desktop').detach();
+
+        $downloadPromo.on('mouseenter focusin', function () {
+            $downloadPromo.addClass('show');
+        });
+
+        $downloadPromo.on('mouseleave focusout', function () {
+            $downloadPromo.removeClass('show');
+        });
+
+        $downloadButtonLinks.css('display', 'block').appendTo('.firefox-download .secondary');
+    }
+
+    initFirefoxDownloadPromo();
+
+
 });

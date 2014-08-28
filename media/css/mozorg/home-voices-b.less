@@ -25,10 +25,42 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Fira Sans Light Italic';
+    src: url('/media/fonts/FiraSans-LightItalic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.fira-sans() {
+    font-family: 'Fira Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.fira-sans-light() {
+    font-family: 'Fira Sans Light', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.fira-sans-light-italic() {
+    font-family: 'Fira Sans Light Italic', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.fira-sans-bold() {
+    font-family: 'Fira Sans Bold', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Fira Sans Light';
+    .fira-sans-light;
     color: #fff;
     text-shadow: none;
+
+    strong {
+        .fira-sans;
+    }
 }
 
 #outer-wrapper {
@@ -65,7 +97,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 
     .tagline {
-        font-family: 'Fira Sans Light';
+        .fira-sans-light;
         color: #ff9797;
         font-size: 62px;
         letter-spacing: -.025em;
@@ -130,50 +162,8 @@ h1, h2, h3, h4, h5, h6 {
         color: #fff;
         overflow: hidden;
 
-        &.tweet {
-            background: #00c0ff;
-        }
-
         &.mozillian {
             background: #f7f7f7;
-        }
-
-        &.firefox-download {
-            background: #689f2a;
-
-            h2 {
-                padding: @baseLine;
-                text-align: center;
-            }
-
-            &.stamp {
-                top: 0;
-                left: 960px;
-            }
-        }
-
-        &.sumo {
-            background: #1d72b3;
-        }
-
-        &.voices-open-web {
-            background: #00bdc9;
-        }
-
-        &.voices-hello {
-            background: #f37a7a;
-        }
-
-        &.net-nutrality {
-            background: #49595e;
-        }
-
-        &.maker-party {
-            background: #ffe500;
-        }
-
-        &.voices-net-nutrality {
-            background: #706a64;
         }
     }
 }
@@ -181,16 +171,108 @@ h1, h2, h3, h4, h5, h6 {
 .promo-large-portrait {
     width: 300px;
     height: 460px;
+
+    h2 {
+        padding: (@baseLine * 4) (@baseLine * 2) 0 (@baseLine * 2);
+    }
 }
 
 .promo-large-landscape {
     width: 620px;
     height: 300px;
+
+    h2 {
+        padding: (@baseLine * 2) (@baseLine * 2) 0 (@baseLine * 2);
+    }
+}
+
+.promo-large-landscape,
+.promo-large-portrait {
+    &> a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+
+            h2.go:after {
+                .transform(rotate(-90deg));
+            }
+        }
+    }
+
+    h2 {
+        position: relative;
+        font-size: 48px;
+        text-align: center;
+
+        &.go:after {
+            position: absolute;
+            bottom: -70px;
+            left: 50%;
+            width: 62px;
+            height: 62px;
+            margin-left: -31px;
+            content: '';
+            background-image: url('/media/img/home/voices-b/promos/go-sprite.png');
+            background-positon: top left;
+            background-repeat: no-repeat;
+            -webkit-transition: -webkit-transform .3s ease-in-out;
+            transition: transform .3s ease-in-out;
+        }
+    }
+
+    p {
+        font-size: 48px;
+        text-align: center;
+        .fira-sans-light;
+        line-height: 1.2;
+        color: #fff;
+    }
 }
 
 .promo-small-landscape {
+    position: relative;
     width: 300px;
     height: 140px;
+    overflow: hidden;
+
+    h2 {
+        font-size: 28px;
+        line-height: 1.2;
+        color: #fff;
+        text-shadow: none;
+    }
+
+    &> a:link,
+    &> a:visited {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &> a:hover,
+    &> a:focus {
+        h2 {
+            text-decoration: underline;
+        }
+    }
+}
+
+.promo-small-landscape.tweet {
+    background: #00c0ff url('/media/img/home/voices-b/promos/tweet/twitter-logo.png') 20px 20px no-repeat;
+    p {
+        margin: @baseLine @baseLine @baseLine (@baseLine * 4);
+        .fira-sans-light-italic;
+        font-size: 18px;
+        line-height: 1.3;
+    }
 }
 
 .promo-square {
@@ -338,6 +420,193 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 }
+
+/* Begin Individual promo item styles */
+.promo-small-landscape.firefox-download {
+    background: #689f2a;
+
+    &.stamp {
+        top: 0;
+        left: 960px;
+    }
+
+    h2 {
+        position: relative;
+        left: 0;
+        width: 60%;
+        text-align: center;
+        .transition(left .3s ease-in-out);
+
+        &.go:after {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            width: 62px;
+            height: 42px;
+            margin-left: -31px;
+            content: '';
+            background-image: url('/media/img/home/voices-b/promos/go-sprite.png');
+            background-position: 0 -248px;
+            background-repeat: no-repeat;
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &.show {
+        h2 {
+            left: -300px;
+        }
+
+        img {
+            right: -200px;
+        }
+
+        .secondary {
+            opacity: 1;
+            visibility: visible;
+            .transition(opacity .3s .3s ease-in-out);
+        }
+    }
+
+    img {
+        position: absolute;
+        top: -10px;
+        right: -65px;
+        .transition(right .3s ease-in-out);
+    }
+
+    .primary {
+        position: relative;
+        padding: @baseLine;
+    }
+
+    .secondary {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        padding: @baseLine;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        -webkit-transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+        transition: visibility 0s .3s ease-in-out, opacity .3s 0s ease-in-out;
+
+        a:link,
+        a:visited {
+            color: #fff;
+        }
+
+        .download-link {
+            width: 100%;
+        }
+        .download-other {
+            margin-top: @baseLine;
+            color: #fff;
+        }
+    }
+}
+
+.promo-small-landscape.sumo {
+    background: #1d72b3;
+    overflow: visible;
+    z-index: 0;
+
+    img {
+        position: absolute;
+        top: -30px;
+        left: -65px;
+        z-index: -1;
+    }
+
+    a:link,
+    a:visited {
+        position: static;
+        float: right;
+        width: 40%;
+        margin: @baseLine;
+        z-index: 1;
+    }
+
+    a:hover,
+    a:focus {
+        h2 {
+            text-decoration: underline;
+        }
+    }
+}
+
+.promo-small-landscape.webmaker {
+    position:relative;
+    background: #00b0b6;
+    overflow: hidden;
+
+    img {
+        position: absolute;
+        top: -30px;
+        left: -40px;
+    }
+
+    h2 {
+        float: right;
+        width: 45%;
+        margin: @baseLine;
+        text-align: center;
+    }
+}
+
+.promo-small-landscape.net-nutrality {
+    background: #49595e;
+
+    img {
+        margin: @baseLine;
+    }
+
+    h2 {
+        float: right;
+        width: 55%;
+        margin: @baseLine @baseLine @baseLine 0;
+        text-align: left;
+    }
+}
+
+.promo-large-portrait.voices-open-web {
+    background: #00bdc9;
+}
+
+.promo-large-landscape.firefox-hello {
+    background: #f37a7a;
+
+    h2.go:after {
+        background-position: 0 -62px;
+    }
+}
+
+.promo-large-landscape.net-nutrality {
+    background: #706a64;
+
+    h2.go:after {
+        background-position: 0 -124px;
+    }
+}
+
+.promo-large-portrait.maker-party {
+    background: #ffe500 url('/media/img/home/voices-b/promos/maker-party/bg-pattern.jpg') top left repeat;
+    h2 {
+        padding: 0 (@baseLine * 2);
+        color: #746363;
+
+        &.go:after {
+            background-position: 0 -186px;
+        }
+    }
+}
+
+/* End Individual promo item styles */
 
 #firefox-download-section {
     position: relative;

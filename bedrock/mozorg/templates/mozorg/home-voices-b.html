@@ -67,26 +67,65 @@
   <section class="promo-grid-wrapper">
     <div class="promo-grid-inner">
       <ul class="promo-grid">
-        <li class="item promo-large-portrait voices-open-web"></li>
-        <li class="item promo-small-landscape tweet"></li>
+        <li class="item promo-large-portrait voices-open-web">
+          <a href="#">
+            <h2 class="go">{{ _('Voices: Learn why <strong>open matters</strong>') }}</h2>
+          </a>
+        </li>
+        <li class="item promo-small-landscape tweet">
+          <p>There are many ways to get involved in Mozilla! Here are some rangin from user support to&hellip;</p>
+        </li>
         <li class="item promo-square"></li>
         <li class="item promo-square"></li>
         <li class="item promo-small-landscape firefox-download stamp">
-          <h2>{{ _('Free Download') }}</h2>
+          <div class="primary">
+            <h2 class="go">{{ _('Download <strong>Firefox</strong>') }}</h2>
+            <img src="{{ media('img/home/voices/firefox-logo.png') }}" alt="">
+          </div>
+          <div class="secondary">
+            {{ download_firefox(simple=true) }}
+          </div>
         </li>
-        <li class="item promo-large-landscape voices-hello"></li>
+        <li class="item promo-large-landscape firefox-hello">
+          <a href="#">
+            <h2 class="go">{{ _('<strong>Firefox Hello</strong><br> Make a video Call') }}</h2>
+          </a>
+        </li>
         <li class="item promo-square"></li>
         <li class="item promo-square"></li>
-        <li class="item promo-small-landscape sumo"></li>
-        <li class="item promo-small-landscape net-nutrality"></li>
-        <li class="item promo-large-portrait maker-party"></li>
-        <li class="item promo-large-landscape voices-net-nutrality"></li>
+        <li class="item promo-small-landscape sumo">
+          <a href="#">
+            <h2>{{ _('Join our<br> <strong>support<br> team</strong>') }}</h2>
+          </a>
+          <img src="{{ media('img/home/voices/support-fox.png') }}" alt="">
+        </li>
+        <li class="item promo-small-landscape net-nutrality">
+          <a href="#">
+            <img src="{{ MEDIA_URL }}img/home/voices-b/promos/net-nutrality/logo.png" alt="Protect Net Nutrality">
+            <h2>{{ _('Stand with<br> <strong>Mozilla</strong>') }}</h2>
+          </a>
+        </li>
+        <li class="item promo-large-portrait maker-party">
+          <a href="#">
+            <h2 class="go"><img src="{{ MEDIA_URL }}img/home/voices-b/promos/maker-party/logo.png" alt="Maker Party"> Teach, Learn<br> &amp; <strong>Make</strong></h2>
+          </a>
+        </li>
+        <li class="item promo-large-landscape net-nutrality">
+          <a href="#">
+            <h2 class="go">{{ _('“The Net<br> Neutrality Decision:<br> What Does it Mean?”') }}</h2>
+          </a>
+        </li>
         <li class="item promo-square"></li>
         <li class="item promo-square"></li>
         <li class="item promo-square"></li>
         <li class="item promo-square"></li>
         <li class="item promo-square"></li>
-        <li class="item promo-small-landscape sumo"></li>
+        <li class="item promo-small-landscape webmaker">
+          <a href="#">
+            <h2>{{ _('Become a <strong>Webmaker</strong>') }}</h2>
+            <img src="{{ media('img/home/voices/webmaker/webmaker-logo.png') }}" alt="">
+          </a>
+        </li>
         <li class="item promo-square"></li>
       </ul>
     </div>
