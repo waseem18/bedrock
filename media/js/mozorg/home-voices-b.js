@@ -8,7 +8,7 @@ $(function () {
     var $promos = $('.promo-grid');
     var $promoContainer = $('.promo-grid-inner');
 
-    function showFaces (show) {
+    function showFaces(show) {
         if (show) {
             $promos.find('.promo-square, .promo-spacer').show().addClass('item');
         } else {
@@ -16,7 +16,7 @@ $(function () {
         }
     }
 
-    function initFacesGrid () {
+    function initFacesGrid() {
         if (window.matchMedia) {
             // hide/disable pagers in mobile view
             var queryIsMobile = matchMedia('(max-width: 460px)');
@@ -39,7 +39,7 @@ $(function () {
         }
     }
 
-    function initFirefoxDownloadPromo () {
+    function initFirefoxDownloadPromo() {
         var $downloadPromo = $('.firefox-download').addClass('stamp');
         var $downloadButtonLinks = $('.firefox-download .download-other-desktop').detach();
 
@@ -56,26 +56,26 @@ $(function () {
 
     initFirefoxDownloadPromo();
 
-    function initPromoHoverOver () {
+    function initPromoHoverOver() {
         var $promoLargeLandscape = $('.promo-large-landscape, .promo-large-portrait');
         var showTimeout;
 
-        $promoLargeLandscape.on('mousemove', function (e) {
+        $promoLargeLandscape.on('mousemove', function(e) {
             var $this = $(this);
             if (!$promos.hasClass('scroll') && !$this.hasClass('show')) {
                 $this.addClass('show');
             }
         });
 
-        $promoLargeLandscape.on('focusin', function () {
+        $promoLargeLandscape.on('focusin', function() {
             $(this).addClass('show');
         });
 
-        $promoLargeLandscape.on('mouseleave focusout', function () {
+        $promoLargeLandscape.on('mouseleave focusout', function() {
             $(this).removeClass('show');
         });
 
-        $(window).on('scroll', function () {
+        $(window).on('scroll', function() {
             clearTimeout(showTimeout);
             if (!$promos.hasClass('scroll')) {
                 $promos.addClass('scroll');
@@ -87,7 +87,7 @@ $(function () {
         });
     }
 
-    function initMasonry () {
+    function initMasonry() {
         $('.faces-grid').masonry({
             columnWidth: 140,
             gutter: 20,
