@@ -639,6 +639,9 @@ MINIFY_BUNDLES = {
             'js/libs/masonry.pkgd.js',
             'js/mozorg/home-voices-b.js',
         ),
+        'home-voices-b-ie9': (
+            'js/libs/matchMedia.addListener.js',
+        ),
         'history-slides': (
             'js/libs/jquery.sequence.js',
             'js/mozorg/history-slides.js',

@@ -8,30 +8,36 @@ $(function () {
     var $promos = $('.promo-grid');
     var $promoContainer = $('.promo-grid-inner');
 
-    function toggleFaces (show) {
+    function showFaces (show) {
         if (show) {
-            $promos.find('.promo-square').show().addClass('item');
+            $promos.find('.promo-square, .promo-spacer').show().addClass('item');
         } else {
-            $promos.find('.promo-square').hide().removeClass('item');
+            $promos.find('.promo-square, .promo-spacer').hide().removeClass('item');
         }
     }
 
-    // hide/disable pagers in mobile view
-    var queryIsMobile = matchMedia('(max-width: 460px)');
+    function initFacesGrid () {
+        if (window.matchMedia) {
+            // hide/disable pagers in mobile view
+            var queryIsMobile = matchMedia('(max-width: 460px)');
 
-    if (!queryIsMobile.matches) {
-        toggleFaces(true);
-    } else {
-        toggleFaces(false);
-    }
+            if (!queryIsMobile.matches) {
+                showFaces(true);
+            } else {
+                showFaces(false);
+            }
 
-    queryIsMobile.addListener(function(mq) {
-        if (mq.matches) {
-            toggleFaces(false);
+            queryIsMobile.addListener(function(mq) {
+                if (mq.matches) {
+                    showFaces(false);
+                } else {
+                    showFaces(true);
+                }
+            });
         } else {
-            toggleFaces(true);
+            showFaces(true);
         }
-    });
+    }
 
     function initFirefoxDownloadPromo () {
         var $downloadPromo = $('.firefox-download').addClass('stamp');
@@ -81,18 +87,23 @@ $(function () {
         });
     }
 
+    function initMasonry () {
+        $('.faces-grid').masonry({
+            columnWidth: 140,
+            gutter: 20,
+            itemSelector: 'li'
+        });
+
+        $promos.masonry({
+            columnWidth: 140,
+            gutter: 20,
+            itemSelector: '.item',
+            stamp: '.stamp'
+        });
+    }
+
+    initFacesGrid();
     initPromoHoverOver();
+    initMasonry();
 
-    $('.faces-grid').masonry({
-        columnWidth: 140,
-        gutter: 20,
-        itemSelector: 'li'
-    });
-
-    $promos.masonry({
-        columnWidth: 140,
-        gutter: 20,
-        itemSelector: '.item',
-        stamp: '.stamp'
-    });
 });
