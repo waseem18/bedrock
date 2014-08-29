@@ -55,8 +55,9 @@ $(function () {
         var showTimeout;
 
         $promoLargeLandscape.on('mousemove', function (e) {
-            if (!$promos.hasClass('scroll')) {
-                $(this).addClass('show');
+            var $this = $(this);
+            if (!$promos.hasClass('scroll') && !$this.hasClass('show')) {
+                $this.addClass('show');
             }
         });
 
