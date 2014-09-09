@@ -6,6 +6,7 @@ src/basket-client
 packages/PyYAML/lib
 src/feedparser/feedparser
 src/django-extensions
+src/django-pagedown
 src/django-recaptcha
 src/django-rest-framework
 src/django-dnt

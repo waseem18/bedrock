@@ -51,6 +51,7 @@ DOTLANG_FILES = ['main', 'download_button', 'newsletter']
 # matches the first url component (e.g. mozilla.org/gameon/)
 SUPPORTED_NONLOCALES += [
     # from redirects.urls
+    'admin',
     'telemetry',
     'webmaker',
     'gameon',
@@ -828,6 +829,7 @@ MIDDLEWARE_CLASSES = (
     'bedrock.mozorg.middleware.CacheMiddleware',
     'dnt.middleware.DoNotTrackMiddleware',
     'lib.l10n_utils.middleware.FixLangFileTranslationsMiddleware',
+    'bedrock.mozorg.middleware.AdminAuthMiddleware',
 ))
 
 INSTALLED_APPS = get_apps(exclude=(
@@ -846,6 +848,7 @@ INSTALLED_APPS = get_apps(exclude=(
     'south',
 
     # Django contrib apps
+    'django.contrib.admin',
     'django_sha2',  # Load after auth to monkey-patch it.
     'django.contrib.contenttypes',
     'django.contrib.messages',
@@ -878,6 +881,8 @@ INSTALLED_APPS = get_apps(exclude=(
     'rna',
     'raven.contrib.django.raven_compat',
 ))
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 LOCALE_PATHS = (
     path('locale'),
@@ -1105,3 +1110,5 @@ LOGGING = {
         },
     },
 }
+
+PASSWORD_HASHERS = ['django.contrib.auth.hashers.PBKDF2PasswordHasher']

@@ -6,7 +6,14 @@ import datetime
 from email.utils import formatdate
 import time
 
+from django.contrib.auth.middleware import AuthenticationMiddleware
 from django_statsd.middleware import GraphiteRequestTimingMiddleware
+
+
+class AdminAuthMiddleware(object):
+    def process_request(self, request):
+        if request.path.startswith('/admin/'):
+            AuthenticationMiddleware().process_request(request)
 
 
 class CacheMiddleware(object):
