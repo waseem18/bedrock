@@ -55,3 +55,6 @@
 [submodule "vendor-local/src/django-pagedown"]
 	path = vendor-local/src/django-pagedown
 	url = https://github.com/timmyomahony/django-pagedown.git
+[submodule "vendor-local/src/whitenoise"]
+	path = vendor-local/src/whitenoise
+	url = https://github.com/evansd/whitenoise.git
