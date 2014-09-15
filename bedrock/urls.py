@@ -19,7 +19,10 @@ handler500 = 'lib.bedrock_util.server_error_view'
 
 urlpatterns = patterns(
     '',
+    # authenticated urls
     (r'^admin/', include(admin.site.urls)),
+    (r'^api-token-auth/', 'rest_framework.authtoken.views.obtain_auth_token'),
+    (r'^rna/', include('rna.urls')),
     # Main pages
     (r'^lightbeam/', include('bedrock.lightbeam.urls')),
     (r'^foundation/', include('bedrock.foundation.urls')),

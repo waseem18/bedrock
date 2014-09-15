@@ -52,13 +52,15 @@ DOTLANG_FILES = ['main', 'download_button', 'newsletter']
 SUPPORTED_NONLOCALES += [
     # from redirects.urls
     'admin',
+    'api-token-auth',
+    'contribute.json',
+    'credits',
+    'gameon',
+    'rna',
+    'robots.txt',
+    'security',
     'telemetry',
     'webmaker',
-    'gameon',
-    'robots.txt',
-    'credits',
-    'security',
-    'contribute.json',
 ]
 
 ALLOWED_HOSTS = [
@@ -94,8 +96,10 @@ def JINJA_CONFIG():
 
 STATIC_URL = '/static/'
 STATIC_ROOT = path('static')
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 JINGO_MINIFY_USE_STATIC = False
+JINGO_EXCLUDE_APPS = ('admin', 'rest_framework', 'rna')
 CACHEBUST_IMGS = False
 
 # Bundles is a dictionary of two dictionaries, css and js, which list css files
@@ -832,8 +836,10 @@ MIDDLEWARE_CLASSES = (
     'bedrock.mozorg.middleware.CacheMiddleware',
     'dnt.middleware.DoNotTrackMiddleware',
     'lib.l10n_utils.middleware.FixLangFileTranslationsMiddleware',
-    'bedrock.mozorg.middleware.AdminAuthMiddleware',
+    'bedrock.mozorg.middleware.ConditionalAuthMiddleware',
 ))
+
+AUTHENTICATED_URL_PREFIXES = ('/admin/', '/api-token-auth/', '/rna/')
 
 INSTALLED_APPS = get_apps(exclude=(
     'compressor',
@@ -847,6 +853,7 @@ INSTALLED_APPS = get_apps(exclude=(
     'jingo_minify',
     'django_statsd',
     'pagedown',
+    'rest_framework',
     'waffle',
     'south',
 
