@@ -58,3 +58,6 @@
 [submodule "vendor-local/src/whitenoise"]
 	path = vendor-local/src/whitenoise
 	url = https://github.com/evansd/whitenoise.git
+[submodule "vendor-local/src/django-filter"]
+	path = vendor-local/src/django-filter
+	url = https://github.com/alex/django-filter.git

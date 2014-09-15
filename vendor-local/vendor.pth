@@ -6,6 +6,7 @@ packages/PyYAML/lib
 src/basket-client
 src/django-dnt
 src/django-extensions
+src/django-filter
 src/django-pagedown
 src/django-recaptcha
 src/django-rest-framework
