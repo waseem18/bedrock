@@ -134,17 +134,8 @@ We will continue to add features in future versions that will make you know more
 
 
 
-{# The contents of the dashboard_sidebar block appears in a right-column in desktop browsers
+{# The contents of the dashboard_sidebar_contents block appears in a right-column in desktop browsers
    and below the rest of the page contents in mobile browsers.
 #}
 
-{% block dashboard_sidebar %}
-
-<h4>{{ _('Lorem ipsum dolor sit amet') }}</h4>
-<p>
-  {% trans %}
-  Suspendisse lectus leo, consectetur in tempor sit amet, placerat quis neque. Etiam luctus porttitor lorem, sed suscipit est rutrum non. Curabitur lobortis nisl a enim congue semper. Aenean commodo ultrices imperdiet. Vestibulum ut justo vel sapien venenatis tincidunt. Phasellus eget dolor sit amet ipsum dapibus condimentum vitae quis lectus. Aliquam ut massa in turpis dapibus convallis. Praesent elit lacus, vestibulum at malesuada et, ornare et est. Ut augue nunc, sodales ut euismod non, adipiscing vitae orci.
-  {% endtrans %}
-</p>
-
-{% endblock %}
+{% block dashboard_sidebar %}{% endblock %}
