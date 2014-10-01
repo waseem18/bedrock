@@ -17,5 +17,5 @@ from deploy_dev_base import update_assets as base_update_assets
 
 @task
 def update_assets(ctx):
-    base_update_assets(ctx)
+    base_update_assets()
     management_cmd(ctx, 'collectstatic --noinput')
