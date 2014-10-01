@@ -96,7 +96,6 @@ def JINJA_CONFIG():
 
 STATIC_URL = '/static/'
 STATIC_ROOT = path('static')
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 JINGO_MINIFY_USE_STATIC = False
 JINGO_EXCLUDE_APPS = ('admin', 'rest_framework', 'rna')

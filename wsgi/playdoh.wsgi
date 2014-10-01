@@ -31,6 +31,3 @@ application = django.core.handlers.wsgi.WSGIHandler()
 
 if newrelic:
     application = newrelic.agent.wsgi_application()(application)
-
-from whitenoise.django import DjangoWhiteNoise
-application = DjangoWhiteNoise(application)
