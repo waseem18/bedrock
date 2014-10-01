@@ -13,3 +13,9 @@ sys.path.append(ROOT)
 sys.path.append(os.path.join(ROOT, 'bedrock', 'bin', 'update'))
 
 from deploy_dev_base import *  # noqa
+from deploy_dev_base import update_assets as base_update_assets
+
+@task
+def update_assets(ctx):
+    base_update_assets(ctx)
+    management_cmd(ctx, 'collectstatic --noinput')
