@@ -51,6 +51,7 @@
     .clearfix();
 
     .item {
+        background: #bbb;
         position: absolute;
         margin: 0 @baseLine @baseLine 0;
         padding: 0;
@@ -816,8 +817,9 @@
 
 /****************************************************************************/
 // Open Standard
-.promo-large-portrait.open-standard {
-    background: #0c99d5;
+.promo-large-portrait.open-standard,
+.promo-large-landscape.open-standard {
+    background: #0c99d5; // bright blue
 
     h2 {
         padding: 100px @baseLine 0 @baseLine;
@@ -833,6 +835,10 @@
     }
 }
 
+.promo-large-landscape.open-standard h3 {
+    padding-top: @baseLine * 2;
+}
+
 /****************************************************************************/
 // Mission
 .promo-large-portrait.mission {
@@ -846,7 +852,7 @@
 /****************************************************************************/
 // Webmaker
 .promo-large-landscape.webmaker {
-    background: #e14164;
+    background: #e14164; // pinkish red
 
     h2 {
         padding: 90px @baseLine 0 @baseLine;
@@ -868,10 +874,19 @@
     }
 }
 
+.promo-small-landscape.webmaker {
+    background: #e14164; // pinkish red
+
+    h2 {
+        padding: 35px 0 @baseLine 140px;
+        background: url(/media/img/home/voices/promos/webmaker/webmaker.png?30-09-2014) 20px 20px no-repeat;
+    }
+}
+
 /****************************************************************************/
 // Support
 .promo-large-landscape.support {
-    background: #e55525;
+    background: #00af84; // tealish green
 
     h2 {
         padding: 100px @baseLine 0 @baseLine;
@@ -907,6 +922,21 @@
         }
     }
 }
+
+
+/****************************************************************************/
+// Firefox Independent
+.promo-large-portrait.firefox-independent {
+    background: #e55525; // orange
+}
+
+
+/****************************************************************************/
+// Firefox Developer Edition
+.promo-large-portrait.firefox-developer {
+    background: #005da5; // dark blue
+}
+
 
 /****************************************************************************/
 // Firefox Android
