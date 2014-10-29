@@ -30,14 +30,88 @@
 
 {% block body_id %}independent{% endblock %}
 
-{% block page_css %}{% endblock %}
+{% block page_css %}
+  {{ css('firefox_independent') }}
+{% endblock %}
 
 {% block site_header_nav %}{% endblock %}
 {% block site_header_logo %}{% endblock %}
 
 {% block content %}
+<main role="main">
 
-  <h1>{{ _('Choose Independent') }}</h1>
+  <article id="fx10-splash">
+    <div class="container">
+      <h1 class="main-title">{{ _('Choose Independent') }}</h1>
+      <p>video goes here</p>
+    </div>
+  </article>
+
+  <section id="fx10-download">
+    <div class="container">
+      <div class="is-firefox">
+
+        <h2>{{ _('Stay in control of your online life') }}</h2>
+        <p>
+          <a href="#" class="button">{{ _('See what’s new in Firefox') }}</a>
+        </p>
+
+      </div>
+
+      <div class="not-firefox">
+
+        <h2>{{ _('Choose Firefox and stay in control of your online life') }}</h2>
+        <p>
+          <a href="{{ url('firefox.new') }}" class="button">{{ _('Download Firefox') }}</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="fx10-accolades">
+    <div class="container">
+
+      <div class="accolade pcmag">
+        {# L10n: This will be used for image alt text. "PC Magazine" is a proper name and should not be translated. #}
+        <p>{{ _('PC Magazine Editor’s Choice') }}</p>
+
+        {# L10n: This will be used for image alt text. #}
+        <p>{{ _('Four and a half stars') }}</p>
+
+        <p>{{ _('“Beautiful”') }}</p>
+      </div>
+
+      <div class="accolade pcworld">
+        {# L10n: This will be used for image alt text. #}
+        <p>{{ _('Four stars') }}</p>
+
+        <p>{{ _('“Magnificent”') }}</p>
+      </div>
+
+      <div class="accolade trust">
+        {% include 'firefox/desktop/_trust_badge.html' %}
+      </div>
+
+      <div class="accolade cnet">
+        {{ high_res_img('img/firefox/independent/logo-cnet.png', {'alt': 'C|Net', 'width': '147', 'height': '147'}) }}
+        {# L10n: This will be used for image alt text. #}
+        <p>{{ _('Five stars') }}</p>
+
+        <p>{{ _('“Spectacular”') }}</p>
+      </div>
+
+    </div>
+  </section>
+
+  <aside id="fx10-community">
+    <p class="container">
+    {% trans link=url('mozorg.contribute') %}
+      Spread the word. Share our story. <a href="{{ link }}">Find out how</a>
+    {% endtrans %}
+    </p>
+  </aside>
+
 
   <p>{{ _('Watch the video') }}</p>
 
@@ -47,45 +121,15 @@
 
   <p>{{ _('Replay') }}</p>
 
-  <p>{{ _('Choose Firefox and stay in control of your online life') }}</p>
-
-  <p>{{ _('Download Firefox') }}</p>
-
-  <p>{{ _('Stay in control of your online life') }}</p>
-
-  <p>{{ _('See what’s new in Firefox') }}</p>
-
-  {# L10n: This will be used for image alt text. "PC Magazine" is a proper name and should not be translated. #}
-  <p>{{ _('PC Magazine Editor’s Choice') }}</p>
-
-  {# L10n: This will be used for image alt text. #}
-  <p>{{ _('Four and a half stars') }}</p>
-
-  <p>{{ _('“Beautiful”') }}</p>
-
-  {# L10n: This will be used for image alt text. #}
-  <p>{{ _('Five stars') }}</p>
-
-  <p>{{ _('“Spectacular”') }}</p>
-
-  {# L10n: This will be used for image alt text. #}
-  <p>{{ _('Four stars') }}</p>
-
-  <p>{{ _('“Magnificent”') }}</p>
-
-  <p>{% include 'firefox/desktop/_trust_badge.html' %}</p>
-
-  <p>
-  {% trans link=url('mozorg.contribute') %}
-    Spread the word. Share our story. <a href="{{ link }}">Find out how</a>
-  {% endtrans %}
-  </p>
-
   {# L10n: This will be used in tweets, followed by a short URL. The '#ChooseIndependent' hashtag should not be translated.  #}
   <p>{{ _('Keep the passion for a free and open Internet burning bright! #ChooseIndependent. Choose Firefox:') }}</p>
 
+
+</main>
 {% endblock %}
 
-{% block js %}{% endblock %}
+{% block js %}
+  {{ js('firefox_independent') }}
+{% endblock %}
 
 {% block email_form %}{% endblock %}

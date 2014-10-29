@@ -305,6 +305,9 @@ MINIFY_BUNDLES = {
         'firefox_sync_anim': (
             'css/firefox/sync-animation.less',
         ),
+        'firefox_independent': (
+            'css/firefox/independent.less',
+        ),
         'installer_help': (
             'css/base/mozilla-modal.less',
             'css/firefox/template-resp.less',
@@ -595,6 +598,9 @@ MINIFY_BUNDLES = {
             'js/libs/socialshare.min.js',
             'js/libs/modernizr.custom.csstransitions.js',
             'js/firefox/new.js',
+        ),
+        'firefox_independent': (
+            'js/firefox/independent.js',
         ),
         'firefox_os': (
             'js/base/mozilla-modal.js',
